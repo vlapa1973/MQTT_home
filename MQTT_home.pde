@@ -15,6 +15,8 @@ String clientMQTT = "client_009";
 String filePath = "data/";
 int fillet = 5;
 
+boolean flagWork = false;
+
 MQTTClient client;
 Adapter adapter;
 PFont myFont;
@@ -51,7 +53,7 @@ void setup() {
   client = new MQTTClient(this, adapter);
 
 
-  size(403, 542);
+  size(1900, 1000);
   try {
     client.connect("mqtt://" + userMQTT + ":" + paswdMQTT + "@" + urlMQTT, clientMQTT);
   }
@@ -67,4 +69,8 @@ void setup() {
 
 /*********************************************************************************/
 void draw() {
+  //if (flagWork){
+  //  loadFile();
+  //  drawingGraph();
+  //}
 }
