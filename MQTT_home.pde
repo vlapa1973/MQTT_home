@@ -1,8 +1,8 @@
 /*********************************************************************************
  *
- *  MQTT - test
- *  20230707 - 20230707
- *  v.001
+ *  MQTT - save Data
+ *  20230707 - 20230709
+ *  v.002
  *
  *********************************************************************************/
 import mqtt.*;
@@ -33,8 +33,8 @@ class Adapter implements MQTTListener {
     handlerData(topic, new String(payload));
 
     //println(topic + " - " + new String(payload));
-    String str = topic + " - " + new String(payload);
-    visible(str);
+    //String str = topic + " - " + new String(payload);
+    //visible(str);
   }
 
   /*********************************************************************************/
@@ -53,7 +53,7 @@ void setup() {
   client = new MQTTClient(this, adapter);
 
 
-  size(1900, 1000);
+  //size(1900, 1000);
   try {
     client.connect("mqtt://" + userMQTT + ":" + paswdMQTT + "@" + urlMQTT, clientMQTT);
   }
@@ -69,8 +69,5 @@ void setup() {
 
 /*********************************************************************************/
 void draw() {
-  //if (flagWork){
-  //  loadFile();
-  //  drawingGraph();
-  //}
+  
 }
