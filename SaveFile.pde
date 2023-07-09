@@ -5,17 +5,6 @@ void saveFile(String a, String b, String c) {
   String[] list = {};
   String[] list2 = {};
 
-  list = loadStrings(filePath + year() + '/' + month() + '/' + day() + '/'
-    + a + '/' + b + ".txt");
-
-  if (list == null) {
-    String[] temp = {};
-    saveStrings(filePath + year() + '/' + month() + '/' + day() + '/'
-      + a + '/' + b + ".txt", temp);
-    list = loadStrings(filePath + year() + '/' + month() + '/' + day() + '/'
-      + a + '/' + b + ".txt");
-  }
-
   String D = "";
   String H = "";
   String M = "";
@@ -28,10 +17,21 @@ void saveFile(String a, String b, String c) {
   H += (hour() < 10) ? "0" + hour() : hour();
   M += (minute() < 10) ? "0" + minute() : minute();
   S += (second() < 10) ? "0" + second() : second();
-  
+
+  list = loadStrings(filePath + Y + '/' + N + '/' + D + '/'
+    + a + '/' + b + ".txt");
+
+  if (list == null) {
+    String[] temp = {};
+    saveStrings(filePath + Y + '/' + N + '/' + D + '/'
+      + a + '/' + b + ".txt", temp);
+    list = loadStrings(filePath + Y + '/' + N + '/' + D + '/'
+      + a + '/' + b + ".txt");
+  }
+
   c = H + ';' + M + ';' + S + ';' + c;
   list2 = append(list, c);
 
-  saveStrings(filePath + year() + '/' + month() + '/' + day() + '/'
+  saveStrings(filePath + Y + '/' + N + '/' + D + '/'
     + a + '/' + b + ".txt", list2);
 }
