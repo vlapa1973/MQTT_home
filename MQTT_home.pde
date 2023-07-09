@@ -12,7 +12,6 @@ String userMQTT = "mqtt2";
 String paswdMQTT = "qwe1243";
 String clientMQTT = "client_009";
 
-String time, timeArh, timeMonth, timeDate, timeExc, timeReport; 
 String filePath = "data/";
 int fillet = 5;
 
@@ -27,14 +26,16 @@ class Adapter implements MQTTListener {
     client.subscribe("#");
   }
 
-/*********************************************************************************/
+  /*********************************************************************************/
   void messageReceived(String topic, byte[] payload) {
-    println(topic + " - " + new String(payload));
+    handlerData(topic, new String(payload));
+
+    //println(topic + " - " + new String(payload));
     String str = topic + " - " + new String(payload);
     visible(str);
   }
 
-/*********************************************************************************/
+  /*********************************************************************************/
   void connectionLost() {
     println("Connection lost !");
   }
@@ -44,25 +45,24 @@ class Adapter implements MQTTListener {
 void setup() {
   myFont = createFont("Arial", 12);
   textFont(myFont);
-  
+
   adapter = new Adapter();
-  
+
   client = new MQTTClient(this, adapter);
 
 
-size(403, 542);
+  size(403, 542);
   try {
     client.connect("mqtt://" + userMQTT + ":" + paswdMQTT + "@" + urlMQTT, clientMQTT);
   }
   catch (Exception e) {
-    TimeString();
-    String[] lines = {timeExc + " MQTT = " + " - does not exist"};
+
+    String[] lines = {year() + month() + '_' + day() + '_'
+      + hour() + minute() + second()
+      + "___MQTT - does not exist"};
     saveStrings(filePath + "log_MQTT.txt", lines);
     exit();
   }
-  
-  
-  
 }
 
 /*********************************************************************************/
