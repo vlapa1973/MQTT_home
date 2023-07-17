@@ -7,6 +7,9 @@
  *********************************************************************************/
 import mqtt.*;
 
+//PImage icon = loadImage("data/myicon.png");
+//surface.setIcon(icon);
+
 String urlMQTT = "178.20.46.157";
 String userMQTT = "mqtt2";
 String paswdMQTT = "qwe1243";
